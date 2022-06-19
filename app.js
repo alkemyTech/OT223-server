@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
+const fileUpload = require('express-fileupload')
 require('dotenv').config()
 
 const indexRouter = require('./routes/index');
@@ -11,6 +12,11 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 app.use(cors())
+
+// file upload middleware
+app.use(fileUpload({
+  debug: process.env.NODE_ENV === "development"
+}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

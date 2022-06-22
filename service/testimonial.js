@@ -1,8 +1,5 @@
-const getAllTestimonials = async () => {
-  return 'response'
-}
-
+const getAllTestimonials = async () => 'response';
 
 module.exports = {
-  getAllTestimonials
+  getAllTestimonials,
 };

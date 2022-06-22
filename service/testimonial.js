@@ -5,5 +5,5 @@ const getAllTestimonials = async () => {
 }
 
 module.exports = {
-  getAllTestimonials
+  getAllTestimonials,
 };

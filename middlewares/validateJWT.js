@@ -1,11 +1,11 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 const validateJWT = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
+  const token = req.headers.authorization?.split(' ')[1];
   if (!token) {
     return res.status(401).json({
       ok: false,
-      msg: "No se ha proporcionado ningún token, por favor, inicie sesión",
+      msg: 'No se ha proporcionado ningún token, por favor, inicie sesión',
     });
   }
 
@@ -16,7 +16,7 @@ const validateJWT = (req, res, next) => {
   } catch (error) {
     return res.status(401).json({
       ok: false,
-      msg: "Token invalido, por favor, inicie sesión nuevamente",
+      msg: 'Token invalido, por favor, inicie sesión nuevamente',
     });
   }
   next();

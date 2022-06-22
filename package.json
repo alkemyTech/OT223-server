@@ -2,24 +2,30 @@
   "name": "ong-server",
   "version": "0.0.0",
   "private": true,
+  "main": "app.js",
   "scripts": {
     "start": "node ./bin/www",
+    "test": "NODE_ENV='test' jest",
+    "dev": "nodemon app.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
   "dependencies": {
+    "aws-sdk": "^2.1157.0",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-fileupload": "^1.4.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.3",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "^8.18.0",
@@ -32,6 +38,8 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.16",
     "sequelize-cli": "^6.2.0"
   },
   "lint-staged": {

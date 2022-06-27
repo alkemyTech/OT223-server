@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const messages = require('../constant/messages.json');
 
 const generateJWT = async ({
   firstName, lastName, email, image, roleId,
@@ -16,7 +17,7 @@ const generateJWT = async ({
     );
     return token;
   } catch (error) {
-    return new Error('No se pudo generar el token. Por favor, intente nuevamente');
+    return new Error(messages.errors.noTokenGenerated);
   }
 };
 

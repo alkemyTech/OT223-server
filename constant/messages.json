@@ -1,0 +1,16 @@
+{
+  "errors": {
+    "invalidFields": "Los campos no son válidos",
+    "noEmail": "El correo electrónico es obligatorio",
+    "invalidEmail": "Correo electrónico no válido",
+    "noPassword": "La contraseña es obligatoria",
+    "noToken": "No se ha proporcionado ningún token. Por favor, inicie sesión nuevamente",
+    "noTokenGenerated": "No se pudo generar el token. Por favor, intente nuevamente",
+    "invalidToken": "Token no válido. Por favor, inicie sesión nuevamente",
+    "noAuthenticated": "Correo electrónico o contraseña no válidos",
+    "invalidFiles": "Archivos no válidos",
+    "invalidURL": "URL no válida",
+    "noExistingURL": "La URL proporcionada no existe",
+    "unexpected": "Ha ocurrido un error. Por favor, contacte con un administrador"
+  }
+}

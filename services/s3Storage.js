@@ -7,6 +7,7 @@ const S3 = require('aws-sdk/clients/s3');
 const { v4 } = require('uuid');
 
 const config = require('../config/config');
+const messages = require('../constant/messages.json');
 
 const {
   accessKeyId, secretAccessKey, region, bucketName,
@@ -48,7 +49,7 @@ const client = new S3({
  */
 const uploadFiles = async (files = {}) => {
   const validation = filesAreCorrect(files);
-  if (!validation) throw new Error('Provide valid files');
+  if (!validation) throw new Error(messages.errors.invalidFiles);
   const URLs = {};
 
   for (const key in files) {
@@ -81,7 +82,7 @@ const uploadFiles = async (files = {}) => {
  */
 const getFileFromURL = async (location) => {
   const key = getKeyFromLocationURL(location);
-  if (!key) { throw new Error('Invalid URL'); }
+  if (!key) { throw new Error(messages.errors.invalidURL); }
   const params = {
     Bucket: bucketName,
     Key: key,
@@ -90,7 +91,7 @@ const getFileFromURL = async (location) => {
     const data = await client.getObject(params).promise();
     return data;
   } catch (error) {
-    if (error.code === 'NoSuchKey') { throw new Error('URL provided does not exist'); }
+    if (error.code === 'NoSuchKey') { throw new Error(messages.errors.noExistingURL); }
   }
 };
 
@@ -112,7 +113,7 @@ const deleteFileFromURL = async (location) => {
     const data = await client.deleteObject(params).promise();
     return data;
   } catch (error) {
-    if (error.code === 'NoSuchKey') { throw new Error('URL provided does not exist'); }
+    if (error.code === 'NoSuchKey') { throw new Error(messages.errors.noExistingURL); }
   }
 };
 

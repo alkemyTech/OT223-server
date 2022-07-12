@@ -1,6 +1,7 @@
-const { check } = require('express-validator');
+const { check, body } = require('express-validator');
 const validateFields = require('./validateFields');
 const messages = require('../constant/messages.json');
+const model = require('../models').User;
 
 const loginValidation = () => ([
   check('email', messages.errors.noEmail).not().isEmpty(),
@@ -9,6 +10,29 @@ const loginValidation = () => ([
   validateFields,
 ]);
 
+const registerValidation = () => ([
+  body('firstName', messages.errors.noName)
+    .exists()
+    .not()
+    .isEmpty()
+    .isLength({ min: 3 }),
+  body('lastName', messages.errors.noLastName)
+    .exists()
+    .not()
+    .isEmpty()
+    .isLength({ min: 3 }),
+  body('email', messages.errors.invalidEmail).exists().isEmail(),
+  body('password', messages.errors.passwordRequirements).exists().isLength({ min: 5 }),
+  body('repeatPassword', messages.errors.unMatchedPassword).custom((value, { req }) => {
+    if (value !== req.body.password) {
+      throw new Error();
+    }
+    return true;
+  }),
+  validateFields,
+]);
+
 module.exports = {
   loginValidation,
+  registerValidation,
 };

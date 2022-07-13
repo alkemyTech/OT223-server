@@ -11,6 +11,11 @@
     "invalidFiles": "Archivos no válidos",
     "invalidURL": "URL no válida",
     "noExistingURL": "La URL proporcionada no existe",
-    "unexpected": "Ha ocurrido un error. Por favor, contacte con un administrador"
+    "unexpected": "Ha ocurrido un error. Por favor, contacte con un administrador",
+    "noName": "Ingrese un nombre",
+    "noLastName": "Ingrese un apellido",
+    "unMatchedPassword": "La confirmación de la contraseña no coincide con la anterior",
+    "passwordRequirements": "La contraseña debe contener al menos 5 caracteres",
+    "userExists": "Ya existe un usuario creado con este email"
   }
 }

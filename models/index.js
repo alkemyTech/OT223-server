@@ -6,7 +6,10 @@ const basename = path.basename(__filename);
 const config = require(`${__dirname}/../config/config`).development;
 const db = {};
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize(config.database, config.username, config.password, config, {
+  host: config.host,
+  dialect: config.dialect,
+});
 
 fs
   .readdirSync(__dirname)
@@ -24,5 +27,8 @@ Object.keys(db).forEach((modelName) => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+db.models = {};
+db.models.User = require('./user')(sequelize, Sequelize.DataTypes);
 
 module.exports = db;

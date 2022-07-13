@@ -6,6 +6,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
+const db = require('./models');
 
 const indexRouter = require('./routes');
 
@@ -21,6 +22,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 indexRouter(app);
+
+// sync Sequelize with MySQL Database
+(async () => {
+  await db.sequelize.sync();
+})();
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -38,8 +44,12 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-app.listen(3000, () => {
-  console.log('Listen PORT 3000');
+/* app.get('/', (req, res) => {
+  res.send('<h1>Hola</h1>');
+}); */
+
+app.listen(4000, () => {
+  console.log('Listen on PORT 4000');
 });
 
 module.exports = app;

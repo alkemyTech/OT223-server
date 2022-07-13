@@ -41,8 +41,8 @@ const register = async (req, res) => {
 
   // store in the database
   await model.beforeCreate(async () => {
-    await model.findAll({ where: { email } }).then((user) => {
-      if (model.email !== req.body.email) {
+    await model.findOne({ where: { email } }).then((user) => {
+      if (user) {
         throw new Error(messages.errors.userExists);
       }
     });

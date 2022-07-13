@@ -1,7 +1,6 @@
 const { check, body } = require('express-validator');
 const validateFields = require('./validateFields');
 const messages = require('../constant/messages.json');
-const model = require('../models').User;
 
 const loginValidation = () => ([
   check('email', messages.errors.noEmail).not().isEmpty(),

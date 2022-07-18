@@ -14,10 +14,21 @@ module.exports = (sequelize, DataTypes) => {
   Role.init({
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    deletedAt: DataTypes.DATE,
+    deletedAt: {
+      type: DataTypes.DATE,
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+    },
   }, {
     sequelize,
     modelName: 'Role',
+    tableName: 'roles',
     paranoid: true,
   });
   return Role;

@@ -3,10 +3,12 @@ module.exports = {
     await queryInterface.addColumn('organizations', 'createdAt', {
       allowNull: false,
       type: Sequelize.DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
     });
     await queryInterface.addColumn('organizations', 'updatedAt', {
       allowNull: false,
       type: Sequelize.DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
     });
   },
 

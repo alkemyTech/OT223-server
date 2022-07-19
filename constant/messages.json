@@ -16,6 +16,7 @@
     "noLastName": "Ingrese un apellido",
     "unMatchedPassword": "La confirmación de la contraseña no coincide con la anterior",
     "passwordRequirements": "La contraseña debe contener al menos 5 caracteres",
-    "userExists": "Ya existe un usuario creado con este email"
+    "userExists": "Ya existe un usuario creado con este email",
+    "noExistingOrganization": "La organización no existe"
   }
 }

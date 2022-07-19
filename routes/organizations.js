@@ -1,8 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-const controller = require('../controller/organizationController');
-const messages = require('../constant/messages.json');
+const controller = require('../controller/organizationController');s
+const validateJWT = require('../middlewares/validateJWT');
 
 router.get(
   '/:id/public',
@@ -15,5 +15,18 @@ router.get(
     }
   },
 );
+
+router.put(
+  '/:id',
+  validateJWT,
+  async (req, res, next) => {
+    try {
+      const newData = await controller.updateData(req, res)
+      res.status(204).json(newData)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
 
 module.exports = router;

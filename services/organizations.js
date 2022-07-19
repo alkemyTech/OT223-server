@@ -1,4 +1,5 @@
 const db = require('../models');
+const messages = require('../constant/messages.json')
 
 const baseOrganization = {
   name: '',
@@ -30,6 +31,18 @@ const getPublicData = async (req, res) => {
   if (!dataValues) return baseOrganization;
   return orgStructure(dataValues);
 };
+
+const updateData = async (req, res) => {
+  const data = req.body;
+  const { id } = req.params
+  const organization = await db.Organization.findByPk(id)
+  if(!organization) {
+    throw new Error(messages.errors.noExistingOrganization)
+  }
+  const newData = await organization.update(data)
+  console.log(newData);
+  return newData
+}
 
 module.exports = {
   getPublicData,

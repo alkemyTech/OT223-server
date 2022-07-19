@@ -17,7 +17,7 @@ const organizationSchema = (DataTypes) => ({
   },
   welcomeText: {
     allowNull: false,
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     field: 'welcome_text',
   },
   address: {

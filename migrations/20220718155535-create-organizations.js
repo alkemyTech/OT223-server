@@ -19,16 +19,33 @@ module.exports = {
       },
       welcomeText: {
         allowNull: false,
-        type: Sequelize.DataTypes.STRING,
+        type: Sequelize.DataTypes.TEXT,
         field: 'welcome_text',
       },
-      adress: {
+      address: {
         allowNull: false,
         type: Sequelize.DataTypes.STRING,
       },
       phone: {
         allowNull: false,
         type: Sequelize.DataTypes.STRING,
+      },
+      instagram: {
+        allowNull: true,
+        type: Sequelize.DataTypes.STRING,
+      },
+      facebook: {
+        allowNull: true,
+        type: Sequelize.DataTypes.STRING,
+      },
+      linkedin: {
+        allowNull: true,
+        type: Sequelize.DataTypes.STRING,
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DataTypes.DATE,
+        defaultValue: Sequelize.NOW,
       },
     });
   },

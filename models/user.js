@@ -1,6 +1,7 @@
 const {
   Model,
 } = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -23,12 +24,10 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     password: DataTypes.STRING,
     roleId: DataTypes.INTEGER,
-    deletedAt: {
-      type: DataTypes.DATE,
-    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
     },
   }, {
     sequelize,

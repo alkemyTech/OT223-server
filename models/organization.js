@@ -36,7 +36,7 @@ const organizationSchema = (DataTypes) => ({
     allowNull: true,
     type: DataTypes.STRING,
   },
-  linkedid: {
+  linkedin: {
     allowNull: true,
     type: DataTypes.STRING,
   },

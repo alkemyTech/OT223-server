@@ -1,7 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-const controller = require('../controller/organizationController');s
+const controller = require('../controller/organizationController');
+
 const validateJWT = require('../middlewares/validateJWT');
 
 router.get(
@@ -21,12 +22,15 @@ router.put(
   validateJWT,
   async (req, res, next) => {
     try {
-      const newData = await controller.updateData(req, res)
-      res.status(204).json(newData)
+      const newData = await controller.updateData(req, res);
+      res.status(200).json({
+        ok: true,
+        ...newData,
+      });
     } catch (error) {
-      next(error)
+      next(error);
     }
-  }
-)
+  },
+);
 
 module.exports = router;

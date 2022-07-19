@@ -6,4 +6,5 @@ const updateData = async (req, res) => service.updateData(req, res);
 
 module.exports = {
   getPublicData,
+  updateData,
 };

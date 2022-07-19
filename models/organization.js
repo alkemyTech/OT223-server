@@ -1,4 +1,4 @@
-const { Model } = require('sequelize');
+const { Model, Sequelize } = require('sequelize');
 
 const organizationSchema = (DataTypes) => ({
   id: {
@@ -43,10 +43,7 @@ const organizationSchema = (DataTypes) => ({
   createdAt: {
     allowNull: false,
     type: DataTypes.DATE,
-  },
-  updatedAt: {
-    allowNull: false,
-    type: DataTypes.DATE,
+    defaultValue: Sequelize.NOW,
   },
 });
 

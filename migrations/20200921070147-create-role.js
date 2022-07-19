@@ -1,6 +1,8 @@
+const TABLE_NAME = 'roles';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Roles', {
+    await queryInterface.createTable(TABLE_NAME, {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,16 +16,10 @@ module.exports = {
       description: {
         type: Sequelize.STRING,
       },
-      deletedAt: {
-        type: Sequelize.DATE,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
       },
     });
   },

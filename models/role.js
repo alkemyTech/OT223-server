@@ -1,4 +1,4 @@
-const { Model } = require('sequelize');
+const { Model, Sequelize } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Role extends Model {
@@ -14,11 +14,17 @@ module.exports = (sequelize, DataTypes) => {
   Role.init({
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    deletedAt: DataTypes.DATE,
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
+    },
   }, {
     sequelize,
     modelName: 'Role',
+    tableName: 'roles',
     paranoid: true,
+    timestamps: false,
   });
   return Role;
 };

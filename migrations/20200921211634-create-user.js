@@ -1,6 +1,8 @@
+const TABLE_NAME = 'users';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable(TABLE_NAME, {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,6 +17,7 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING,
+        unique: true,
       },
       password: {
         type: Sequelize.STRING,
@@ -25,26 +28,20 @@ module.exports = {
       roleId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Roles',
+          model: 'roles',
           key: 'id',
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
       },
-      deletedAt: {
-        type: Sequelize.DATE,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
       },
     });
   },
   down: async (queryInterface) => {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable(TABLE_NAME);
   },
 };

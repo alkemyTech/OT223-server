@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.bulkInsert('Users', [{
+    await queryInterface.bulkInsert('users', [{
       firstName: 'Usuario',
       lastName: 'Demo',
       email: 'test@test.com',
@@ -9,7 +9,6 @@ module.exports = {
       roleId: 1,
       image: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
       createdAt: new Date(),
-      updatedAt: new Date(),
     }], {});
   },
 

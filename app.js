@@ -42,7 +42,7 @@ app.use((err, req, res, next) => {
   res.send('<h1>Hola</h1>');
 }); */
 
-app.listen(4000, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log('Listen on PORT 4000');
 });
 

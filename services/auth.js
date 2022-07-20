@@ -27,6 +27,7 @@ const login = async (req, res) => {
   });
 };
 
+// register
 const register = async (req, res) => {
   const {
     firstName, lastName, email, password,
@@ -39,18 +40,18 @@ const register = async (req, res) => {
   // encrypt password
   const hashedPassword = await bcryptjs.hashSync(password, 10);
 
-  // store in the database
-  await model.beforeCreate(async () => {
-    await model.findOne({ where: { email } }).then((user) => {
-      if (user) {
-        throw new Error(messages.errors.userExists);
-      }
-    });
-  }).create({
+  // email validation, not repeated user
+  const user = await model.findOne({ where: { email } });
+  if (user) {
+    throw new Error(messages.errors.userExists);
+  }
+
+  // create user and store in the database
+  const newUser = await model.create({
     firstName, lastName, email, password: hashedPassword,
-  }).then((user) => {
-    res.status(201).json(user);
   });
+
+  return res.status(201).json(newUser);
 };
 
 module.exports = {

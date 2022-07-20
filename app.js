@@ -6,7 +6,6 @@ const logger = require('morgan');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 require('dotenv').config();
-const db = require('./models');
 
 const indexRouter = require('./routes');
 
@@ -22,11 +21,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 indexRouter(app);
-
-// sync Sequelize with MySQL Database
-(async () => {
-  await db.sequelize.sync();
-})();
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

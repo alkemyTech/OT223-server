@@ -4,6 +4,7 @@ const router = express.Router();
 const controller = require('../controller/organizationController');
 
 const validateJWT = require('../middlewares/validateJWT');
+const validateAdminUser = require('../middlewares/validateAdminUser');
 
 router.get(
   '/:id/public',
@@ -20,6 +21,7 @@ router.get(
 router.put(
   '/:id',
   validateJWT,
+  validateAdminUser,
   async (req, res, next) => {
     try {
       const newData = await controller.updateData(req, res);

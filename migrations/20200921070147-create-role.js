@@ -24,6 +24,6 @@ module.exports = {
     });
   },
   down: async (queryInterface) => {
-    await queryInterface.dropTable('Roles');
+    await queryInterface.dropTable(TABLE_NAME);
   },
 };

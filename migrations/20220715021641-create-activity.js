@@ -1,6 +1,8 @@
+const TABLE_NAME = 'activities';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Activities', {
+    await queryInterface.createTable(TABLE_NAME, {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -16,20 +18,13 @@ module.exports = {
       content: {
         type: Sequelize.STRING,
       },
-      deletedAt: {
-        type: Sequelize.DATE,
-      },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Activities');
+    await queryInterface.dropTable(TABLE_NAME);
   },
 };

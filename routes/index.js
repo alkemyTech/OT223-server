@@ -1,10 +1,10 @@
-const testimonials = require('./testimonial');
+const testimonials = require('./testimonies');
 const user = require('./users');
 const auth = require('./auth');
 const organization = require('./organizations');
 
 const routing = (app) => {
-  app.use('/api/testimonials', testimonials);
+  app.use('/api/testimonies', testimonials);
   app.use('/auth', auth);
   app.use('/api/user', user);
   app.use('/api/organizations', organization);

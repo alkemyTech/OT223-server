@@ -1,5 +1,5 @@
 const {
-  Model,
+  Model, Sequelize,
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
@@ -18,10 +18,15 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     image: DataTypes.STRING,
     content: DataTypes.STRING,
-    deletedAt: DataTypes.DATE,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
+    },
   }, {
     sequelize,
     modelName: 'Activity',
+    tableName: 'activities',
+    timestamps: false,
   });
   return Activity;
 };

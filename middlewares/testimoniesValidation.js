@@ -1,14 +1,25 @@
-const { check, body } = require('express-validator');
+const { body } = require('express-validator');
 const validateFields = require('./validateFields');
 const messages = require('../constant/messages.json');
 
-const loginValidation = () => ([
-  check('email', messages.errors.noEmail).not().isEmpty(),
-  check('email', messages.errors.noEmail).not().isEmpty(),
-  check('password', messages.errors.noPassword).not().isEmpty(),
+const testimonyValidation = () => ([
+  body('name', messages.errors.noName)
+    .exists()
+    .not()
+    .isEmpty(),
+  body('content', messages.errors.noLastName)
+    .exists()
+    .not()
+    .isEmpty(),
+  body('file', messages.errors.noImage).custom((value, { req }) => {
+    if (!req.files) {
+      throw new Error();
+    }
+    return true;
+  }),
   validateFields,
 ]);
 
 module.exports = {
-  loginValidation,
+  testimonyValidation,
 };

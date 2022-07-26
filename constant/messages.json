@@ -18,6 +18,8 @@
     "passwordRequirements": "La contraseña debe contener al menos 5 caracteres",
     "userExists": "Ya existe un usuario creado con este email",
     "noExistingOrganization": "La organización no existe",
-    "unauthorized": "No autorizado"
+    "unauthorized": "No autorizado",
+    "noImage": "Se debe adjuntar una imagen",
+    "noContent": "Proporciona un contenido"
   }
 }

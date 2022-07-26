@@ -1,9 +1,6 @@
 const service = require('../services/testimonies');
 
-const getAllTestimonies = async () => {
-  const response = await service.getAllTestimonies();
-  return response;
-};
+const getAllTestimonies = async () => service.getAllTestimonies();
 
 module.exports = {
   getAllTestimonies,

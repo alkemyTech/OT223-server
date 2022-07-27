@@ -1,6 +1,6 @@
 const { Model, Sequelize } = require('sequelize');
 
-const organizationSchema = (DataTypes) => ({
+const membersSchema = (DataTypes) => ({
   id: {
     primaryKey: true,
     autoIncrement: true,
@@ -13,32 +13,18 @@ const organizationSchema = (DataTypes) => ({
   },
   image: {
     allowNull: false,
-    type: DataTypes.STRING,
-  },
-  welcomeText: {
-    allowNull: false,
     type: DataTypes.TEXT,
-    field: 'welcome_text',
   },
-  address: {
+  organizationId: {
+    type: DataTypes.INTEGER,
+    field: 'organization_id',
     allowNull: false,
-    type: DataTypes.STRING,
-  },
-  phone: {
-    allowNull: false,
-    type: DataTypes.STRING,
-  },
-  instagram: {
-    allowNull: true,
-    type: DataTypes.STRING,
-  },
-  facebook: {
-    allowNull: true,
-    type: DataTypes.STRING,
-  },
-  linkedin: {
-    allowNull: true,
-    type: DataTypes.STRING,
+    references: {
+      model: 'organizations',
+      key: 'id',
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
   },
   createdAt: {
     allowNull: false,
@@ -48,21 +34,21 @@ const organizationSchema = (DataTypes) => ({
 });
 
 module.exports = (sequelize, DataTypes) => {
-  class Organization extends Model {
+  class Member extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.hasMany(models.Member, { as: 'members', foreignKey: 'organizationId' });
+      this.belongsTo(models.Organization, { as: 'organization' });
     }
   }
-  Organization.init(organizationSchema(DataTypes), {
+  Member.init(membersSchema(DataTypes), {
     sequelize,
-    modelName: 'Organization',
-    tableName: 'organizations',
+    modelName: 'Member',
+    tableName: 'members',
     timestamps: false,
   });
-  return Organization;
+  return Member;
 };

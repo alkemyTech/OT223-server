@@ -24,10 +24,11 @@ const login = async (req, res) => {
 
   // Generate token
   const token = await generateJWT(user);
-
+  console.log(user);
   return res.status(200).json({
     data: {
       token,
+      isAdmin: user.role.dataValues.name === 'Admin',
     },
   });
 };
